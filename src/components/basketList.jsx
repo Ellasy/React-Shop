@@ -10,7 +10,7 @@ function BasketList(props) {
     } = props;
 
     const totalPrice = order.reduce((sum, el) => {
-        return sum + el.price * el.quantity;
+        return sum + el.price.finalPrice * el.quantity;
     }, 0);
     return (
         <ul className="collection basket-list">

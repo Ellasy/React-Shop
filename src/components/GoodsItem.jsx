@@ -20,11 +20,11 @@ function GoodsItem(props) {
                 <button 
                     className="btn"
                     onClick={() =>
-                        addToBasket(
+                        addToBasket({
                             mainId,
                             displayName,
                             price,
-                        )
+                        })
                     }
                 >
                     Купить

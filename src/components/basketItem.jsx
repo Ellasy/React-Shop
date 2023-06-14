@@ -25,7 +25,7 @@ function BasketItem(props) {
                 >
                     add
                 </i>{" "} 
-                = {price * quantity}{" "} руб.
+                = {price.finalPrice * quantity}{" "} руб.
                 <span className="secondary-content" onClick={() => removeFromBasket(mainId)}>
                     <i className="material-icons basket-delete">clear</i>
                 </span>

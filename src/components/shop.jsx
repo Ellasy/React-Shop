@@ -53,7 +53,7 @@ function Shop() {
 
     const addToBasket = (item) => {
         const itemIndex = order.findIndex((orderItem) => orderItem.mainId === item.mainId);
-        
+        console.log(item)
         if (itemIndex < 0) {
             const newItem = {
                 ...item,
@@ -65,7 +65,7 @@ function Shop() {
                 if (index === itemIndex) {
                     return {
                         ...orderItem,
-                        quantity: orderItem.quantity +1,
+                        quantity: orderItem.quantity + 1,
                     };
                 } else {
                     return orderItem;
@@ -74,6 +74,7 @@ function Shop() {
             setOrder(newOrder);
         }
         setAlertName(item.displayName);
+        console.log(order)
     };
 
     const removeFromBasket = (itemId) => {
