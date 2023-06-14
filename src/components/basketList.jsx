@@ -10,7 +10,7 @@ function BasketList(props) {
     } = props;
 
     const totalPrice = order.reduce((sum, el) => {
-        return sum +el.price * el.quantity;
+        return sum + el.price * el.quantity;
     }, 0);
     return (
         <ul className="collection basket-list">
@@ -18,7 +18,7 @@ function BasketList(props) {
             {order.length ? (
                 order.map((item) => (
                     <BasketItem 
-                        key={item.id} 
+                        key={item.mainId} 
                         removeFromBasket={removeFromBasket}
                         incQuantity={incQuantity}
                         decQuantity={decQuantity}

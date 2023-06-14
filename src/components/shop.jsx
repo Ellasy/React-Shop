@@ -23,7 +23,7 @@ function Shop() {
 
     const incQuantity = (itemId) => {
         const newOrder = order.map((el) => {
-            if (el.id ===itemId) {
+            if (el.mainId === itemId) {
                 const newQuantity = el.quantity + 1;
                 return {
                     ...el,
@@ -38,7 +38,7 @@ function Shop() {
 
     const decQuantity = (itemId) => {
         const newOrder = order.map((el) => {
-            if (el.id ===itemId) {
+            if (el.mainId === itemId) {
                 const newQuantity = el.quantity - 1;
                 return {
                     ...el,
@@ -52,7 +52,7 @@ function Shop() {
     };
 
     const addToBasket = (item) => {
-        const itemIndex = order.findIndex((orderItem) => orderItem.id === item.id);
+        const itemIndex = order.findIndex((orderItem) => orderItem.mainId === item.mainId);
         
         if (itemIndex < 0) {
             const newItem = {
@@ -61,7 +61,7 @@ function Shop() {
             };
             setOrder([...order, newItem]);
         } else {
-            const newOrder =order.map((orderItem, index) =>{
+            const newOrder = order.map((orderItem, index) =>{
                 if (index === itemIndex) {
                     return {
                         ...orderItem,
@@ -73,11 +73,11 @@ function Shop() {
             });
             setOrder(newOrder);
         }
-        setAlertName(item.name);
+        setAlertName(item.displayName);
     };
 
     const removeFromBasket = (itemId) => {
-        const newOrder = order.filter((el) => el.id !== itemId);
+        const newOrder = order.filter((el) => el.mainId !== itemId);
         setOrder(newOrder);
     };
     
@@ -89,14 +89,14 @@ function Shop() {
         })
         .then((response) => response.json())
         .then((data) => {
-            data.featured && setGoods(data.featured);
+            data.result && setGoods(data.shop);
             setLoading(false);
         })
     }, []);
 
     return (
         <main className="container content">
-            <Cart quantity={order.lenght} handleBasketShow={handleBasketShow} />
+            <Cart quantity={order.length} handleBasketShow={handleBasketShow} />
             {loading ? (
                 <Preloader />
             ) : (

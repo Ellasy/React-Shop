@@ -132,6 +132,14 @@ button:focus-visible {
   -webkit-animation: fade-in 250ms ease-in-out;
 }
 
+.collection {
+  color: black;
+}
+
+.goods {
+  color: black;
+}
+
 @keyframes fade-in {
   from {
     transform: translateY(2rem);

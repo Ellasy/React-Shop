@@ -1,36 +1,35 @@
 function GoodsItem(props) {
     const { 
-        id, 
-        name, 
-        description, 
+        mainId, 
+        displayName, 
+        displayDescription, 
         price, 
-        full_background, 
+        displayAssets, 
         addToBasket = Function.prototype, 
     } = props;
 
     return (
-        <div className="card" id={id}>
+        <div className="card" id={mainId}>
             <div className="card-image">
-                <img src={full_background} alt={name} />
-                <span className="card-title">{name}</span>
+                <img src={displayAssets[0].full_background} alt={displayName} />
             </div>
             <div className="card-content">
-                <p>{description}</p>
+                <p>{displayDescription}</p>
             </div>
             <div className="card-action">
                 <button 
                     className="btn"
                     onClick={() =>
-                        addToBasket({
-                            id,
-                            name,
+                        addToBasket(
+                            mainId,
+                            displayName,
                             price,
-                        })
+                        )
                     }
                 >
                     Купить
                 </button>
-                <span className="right">{price}</span>
+                <span className="right">{price.finalPrice}{" "} руб.</span>
             </div>
         </div>
     );
